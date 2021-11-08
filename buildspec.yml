@@ -21,7 +21,8 @@ phases:
       - cp .env.example .env
       - echo generating app key
       - php artisan key:generate
-      - echo Building the Docker image...
+      - echo Building the Docker image...\
+      - echo $("aws ecr get-login-password --region us-east-1")
       - eval $("aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPOSITORY_URI")
       - docker build -t $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
