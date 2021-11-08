@@ -8,10 +8,10 @@ phases:
     commands:
       - echo Logging in to Amazon ECR....
       - aws --version
-      # login to Elastic container registry
-      - aws ecr get-login-password | docker login --username AWS --password-stdin $REPOSITORY_URI
       - REPOSITORY_URI=387558610146.dkr.ecr.us-east-1.amazonaws.com/laravel-docker-aws
       - IMAGE_TAG=1.0
+      # login to Elastic container registry
+      - aws ecr get-login-password | docker login --username AWS --password-stdin $REPOSITORY_URI
   build:
     commands:
       - echo Build started on `date`
